@@ -37,11 +37,11 @@ public class Map {
             }
 
         }
-        if(count == rockQuantity - 1)
+        if(count == rockQuantity )
         {
             return;
         }
-    //    this.init(); // donekonecna generujem mapu kym nevygenerujem spravnu
+        this.init(); // donekonecna generujem mapu kym nevygenerujem spravnu
     }
 
     public Cell[][] getMap() {
