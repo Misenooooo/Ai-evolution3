@@ -7,9 +7,7 @@ public class Main {
         public static final int mapWidth = 20;
         public static final int rockQuantity = 6;
     //
-    public static void main(String[] args){
-        Map map = new Map(mapLength,mapWidth,rockQuantity);
-
-
+    public static void main(String[] args) {
+        //  Map map = new Map(mapLength,mapWidth,rockQuantity);
     }
 }

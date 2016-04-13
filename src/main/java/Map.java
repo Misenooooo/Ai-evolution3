@@ -7,7 +7,7 @@ public class Map {
     private int length;
     private int windth;
     private int rockQuantity;
-    private Cell[][] Map;
+    public Cell[][] Map;
 
     public Map(int length, int windth, int rockQuantity){
         this.length = length;
@@ -23,7 +23,8 @@ public class Map {
         {
             for (int j = 0; j < windth; j++)
             {
-                   if(count < rockQuantity && generator.nextInt() > 0.8)
+                   Map[i][j] = new Cell();
+                   if(count < rockQuantity && generator.nextFloat() > 0.8)
                    {
                        Map[i][j].setRock(true);
                        Map[i][j].setRock_number(count);
@@ -40,7 +41,7 @@ public class Map {
         {
             return;
         }
-        this.init(); // donekonecna generujem mapu kym nevygenerujem spravnu
+    //    this.init(); // donekonecna generujem mapu kym nevygenerujem spravnu
     }
 
     public Cell[][] getMap() {

@@ -8,6 +8,13 @@ public class Cell {
     int rock_number;
     Boolean visited;
 
+    public Cell()
+    {
+        rock = false;
+        rock_number = -1;
+        visited = false;
+    }
+
     public Boolean getRock() {
         return rock;
     }
