@@ -13,13 +13,39 @@ public class FitnessCalculator {
     public void Calculate(Monk monk, Map map) {
         for (int i = 0; i < monk.getPositions().length; i++) {
             getMove(monk,map,i);
-
-           // makeMove(monk);
+            makeMove(map);
         }
     }
 
     private void makeMove(Map map) {
+        int move_x = 0;
+        int move_y = 0;
+        switch (move){
+            case UP: // TODO toto treba dorobit nejako inteligentne
+                move_y = 1;
+                break;
+            case DOWN:
+                move_y = -1;
+                break;
+            case LEFT:
+                move_x = -1;
+                break;
+            case RIGHT:
+                move_x = 1;
+        }
 
+
+        while((x >= 0 && x < map.getWindth()) && (y >= 0 && y < map.getLength()))
+        {
+            if(map.getMap()[y][x].getVisited() == true)
+            {
+                break;
+            }
+            map.getMap()[y][x].setVisited(true);
+            x = x + move_x;
+            y = y + move_y;
+            System.out.println(move_x + " " + move_y);
+        }
     }
 
     private void getMove(Monk monk, Map map, int i) {

@@ -13,10 +13,11 @@ public class Main {
     //
     public static void main(String[] args) {
         Map map = new Map(mapLength,mapWidth,rockQuantity);
+        map.init();
 
         FitnessCalculator calculator = new FitnessCalculator();
 
-        List<Monk> monks = new ArrayList<Monk>(pocetPanakov);
+        List<Monk> monks = new ArrayList<>(pocetPanakov);
         for(int i = 0; i < pocetPanakov; i++)
         {
             Monk newMonk = new Monk((mapLength*2+mapWidth*2),rockQuantity);
