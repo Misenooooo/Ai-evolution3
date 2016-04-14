@@ -14,7 +14,7 @@ public class FitnessCalculator {
         for (int i = 0; i < monk.getPositions().length; i++) {
             getMove(monk,map,i);
 
-            makeMove(monk);
+           // makeMove(monk);
         }
     }
 
