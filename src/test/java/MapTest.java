@@ -31,4 +31,18 @@ public class MapTest {
         Assert.assertEquals(6,countRocks);
         Assert.assertEquals(400,count);
     }
+
+    @Test
+    public void TestMonk(){
+        int circuit = ((20*2)+(20*2))/2;
+        Monk monk = new Monk(circuit,6);
+        monk.init();
+
+        for(int i =0; i < monk.getCircuit(); i++){
+
+        }
+
+        Assert.assertEquals(40,monk.getPositions().length);
+        Assert.assertEquals(6,monk.getRockReactions().length);
+    }
 }
