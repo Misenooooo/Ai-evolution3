@@ -7,7 +7,7 @@ public class MapTest {
     @Test
     public void TestMap(){
         Map map = new Map(20,20,6);
-        map.init();
+        map.initRandomRocks();
         int count = 0;
         int countRocks = 0;
         for (int i = 0; i < map.getLength(); i++)

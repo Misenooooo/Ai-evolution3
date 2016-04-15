@@ -28,13 +28,13 @@ public class FitnessCalculator {
         move = null;
         for (int i = 0; i < monk.getPositions().length; i++) {
             getMove(monk,map,i);
-            if(makeMove(monk,map) == false) // ak sa mnich dakde zasekol
+            if(makeMove(monk,map,i) == false) // ak sa mnich dakde zasekol
             {
                 break;
             }
-     //       System.out.println(map.toString());
+          //  System.out.println(map.toString());
         }
-
+        System.out.println(map.toString());
         monk.setFitness(cellsVisited);
 
         if(monk.getFitness() == (map.getWindth()*map.getLength())-map.getRockQuantity())
@@ -44,7 +44,7 @@ public class FitnessCalculator {
         return false;
     }
 
-    private boolean makeMove(Monk monk, Map map) {
+    private boolean makeMove(Monk monk, Map map, int i) {
         switch (move){
             case UP:
                 move_y = 1;
@@ -81,6 +81,7 @@ public class FitnessCalculator {
             if(map.getMap()[y][x].getVisited() == false)
             {
                 map.getMap()[y][x].setVisited(true);
+                map.getMap()[y][x].setVisitCount(i);
                 cellsVisited++;
             }
             x = x + move_x;

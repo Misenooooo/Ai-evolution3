@@ -50,7 +50,7 @@ public class Monk {
 
     }
 
-    public void reproduction(Monk foreignMonk) {
+    public void reproductionHalfs(Monk foreignMonk) {
         int halfPos = positions.length / 2;
         for (int i = 0; i < halfPos; i++) {
             positions[i] = foreignMonk.getPositions()[i];
@@ -61,6 +61,21 @@ public class Monk {
             rockReactions[i] = foreignMonk.getRockReactions()[i];
         }
     }
+
+    public void reproductionCrissCross(Monk foreignMonk) {
+
+        for (int i = 0; i < positions.length; i++) {
+            if((i % 2) == 0) {
+                positions[i] = foreignMonk.getPositions()[i];
+            }
+        }
+        for (int i = 0; i < rockReactions.length; i++) {
+            if((i % 2) == 0){
+                rockReactions[i] = foreignMonk.getRockReactions()[i];
+            }
+        }
+    }
+
 
     public void mutate(){
         Random random = new Random();

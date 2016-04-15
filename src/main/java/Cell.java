@@ -8,12 +8,20 @@ public class Cell {
     int rock_number;
     Boolean visited;
 
+
+    int visitCount;
+
     public Cell()
     {
         rock = false;
         rock_number = -1;
         visited = false;
+        visitCount = -1;
     }
+
+    public int getVisitCount() {return visitCount;}
+
+    public void setVisitCount(int visitCount) {this.visitCount = visitCount;}
 
     public Boolean getRock() {
         return rock;

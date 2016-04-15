@@ -38,35 +38,22 @@ public class Map {
         this.length = length;
         this.windth = windth;
         this.rockQuantity = rockQuantity;
+        this.Map = new Cell[length][windth];
     }
 
     public void init(){
-        Map = new Cell[length][windth];
-        int count = 0;
-        Random generator = new Random();
         for(int i = 0; i < length; i++)
         {
             for (int j = 0; j < windth; j++)
             {
-                   Map[i][j] = new Cell();
-                   if(count < rockQuantity && generator.nextFloat() > 0.8)
-                   {
-                       Map[i][j].setRock(true);
-                       Map[i][j].setRock_number(count);
-                       count++;
-                   }
-                    else
-                   {
-                       Map[i][j].setVisited(false);
-                   }
+                Map[i][j] = new Cell(); // toto je nutne
             }
 
         }
-        if(count == rockQuantity )
-        {
-            return;
-        }
-        this.init(); // donekonecna generujem mapu kym nevygenerujem spravnu
+    }
+
+    public void initRandomRocks(){
+
     }
     @Override
     public String toString(){
@@ -84,7 +71,7 @@ public class Map {
                     str.append("R ");
                 }
                 if(getMap()[i][j].getVisited() == true){
-                    str.append("V ");
+                    str.append(getMap()[i][j].visitCount+" ");
                 }
             }
             str.append("\n");
@@ -124,4 +111,15 @@ public class Map {
         this.rockQuantity = rockQuantity;
     }
 
+    public void initTest1() {
+        init();
+        Map[1][5].setRock(true); Map[1][5].setRock_number(0);
+        Map[2][1].setRock(true); Map[2][1].setRock_number(1);
+        Map[3][4].setRock(true); Map[3][4].setRock_number(2);
+        Map[4][2].setRock(true); Map[4][2].setRock_number(3);
+        Map[6][8].setRock(true); Map[6][8].setRock_number(4);
+        Map[6][9].setRock(true); Map[6][9].setRock_number(5);
+
+
+    }
 }
