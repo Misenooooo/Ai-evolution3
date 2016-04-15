@@ -1,3 +1,5 @@
+import com.sun.org.apache.bcel.internal.generic.NEW;
+
 import java.util.*;
 
 /**
@@ -11,6 +13,9 @@ public class Monk {
     private int [] rockReactions;
     private int fitness;
 
+    public Monk(){
+
+    }
 
     public Monk(int circuit, int rockQuantity){
         this.circuit = circuit;
@@ -21,7 +26,7 @@ public class Monk {
         positions = new int[circuit/2];
         rockReactions = new int[rockQuantity];
 
-        ArrayList<Integer> list = new ArrayList<Integer>();
+        List<Integer> list = new ArrayList<>();
         for (int i=0; i<circuit; i++) {
             list.add(new Integer(i));
         }
@@ -42,7 +47,40 @@ public class Monk {
         }
 
 
+
     }
+
+    public void reproduction(Monk foreignMonk) {
+        int halfPos = positions.length / 2;
+        for (int i = 0; i < halfPos; i++) {
+            positions[i] = foreignMonk.getPositions()[i];
+        }
+        int halfRocks = rockReactions.length / 2;
+        for (int i = 0; i < halfRocks; i++) {
+
+            rockReactions[i] = foreignMonk.getRockReactions()[i];
+        }
+    }
+
+    public void mutate(){
+        Random random = new Random();
+        if (random.nextDouble() > 0.5){
+            int pos = random.nextInt(positions.length);
+            positions[pos] = random.nextInt(circuit);
+        }else{
+            int pos = random.nextInt(rockReactions.length);
+            if(rockReactions[pos] == 1){
+                rockReactions[pos] = 0;
+            }else{
+                rockReactions[pos] = 1;
+            }
+        }
+
+    }
+
+
+
+
     public int getFitness() {
         return fitness;
     }

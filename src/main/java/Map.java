@@ -7,11 +7,11 @@ import java.util.Random;
  * Length = 5
  * Width = 6
  *y\x 0  1  2  3  4  5
- * 6  R  N  N  N  R  N 21
-   7  N  R  R  N  N  R 20
+ * 6  R  N  N  N  R  N 17
+   7  N  R  R  N  N  R 18
    8  N  N  R  N  N  N 19
-   9  N  N  N  N  N  N 18
-   10 N  N  N  N  N  N 17
+   9  N  N  N  N  N  N 20
+   10 N  N  N  N  N  N 21
      11 12 13 14 15 16
   Pozicie su y = 2 x je 0 pohyb je RIGHT Povodna pozicia je 8
  *0 1 2 1 // pohyb po y, pohyb po x, pozicia y, pozicia x
@@ -24,14 +24,15 @@ import java.util.Random;
  *
  */
 
-
-
-
 public class Map {
     private int length;
     private int windth;
     private int rockQuantity;
     public Cell[][] Map;
+
+    public Map(){
+
+    }
 
     public Map(int length, int windth, int rockQuantity){
         this.length = length;
