@@ -15,6 +15,8 @@ public class Main {
         Map map = new Map(mapLength,mapWidth,rockQuantity);
         map.init();
 
+        System.out.println(map.toString());
+
         FitnessCalculator calculator = new FitnessCalculator();
 
         List<Monk> monks = new ArrayList<>(pocetPanakov);

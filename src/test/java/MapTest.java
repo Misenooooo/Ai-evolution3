@@ -3,9 +3,6 @@
  */
  import org.junit.*;
 
- import java.util.ArrayList;
- import java.util.List;
-
 public class MapTest {
     @Test
     public void TestMap(){
