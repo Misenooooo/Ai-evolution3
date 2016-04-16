@@ -93,6 +93,17 @@ public class Monk {
 
     }
 
+    public String rockReactionsToString(int i){
+        StringBuilder str = new StringBuilder();
+
+        if (rockReactions[i] == 1) {
+            str.append("Hore(Na mape dole)/Doprava");
+        } else {
+            str.append("Dole(Na mape hore)/Dolava");
+        }
+
+        return str.toString();
+    }
 
 
 

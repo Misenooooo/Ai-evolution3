@@ -14,33 +14,45 @@ public class EvolutionAlgorithm {
 
         FitnessCalculator calculator = new FitnessCalculator();
         SelectiveBreeding breeding = new SelectiveBreeding();
+        FIlePrinter fIlePrinter = new FIlePrinter();
+        fIlePrinter.initPrintWriter();
 
         Monk bestMonk = null;
 
+
+
         for(int i = 0; i < generations; i++)
         {
+            fIlePrinter.printGenererations(i);
+            int count = 0;
             for (Monk currMonk : monks)
             {
                 mapCopy = copier.copy(map);
+
            //   System.out.println("Kopia:\n" + mapCopy.toString());
                 if(calculator.Calculate(currMonk, mapCopy) == true) // podarilo sa dakomu prehrabat zahradu
                 {
                     System.out.println("Best Monk ");
+                    fIlePrinter.printSolution(mapCopy,currMonk, count);
+                    fIlePrinter.closePrintWriter();
                     return currMonk;
-
                 }
-            //  System.out.println("Kopia:\n" + mapCopy.toString());
+                count++;
+           //     fIlePrinter.printIndividuals(mapCopy,count++);
             }
 
-            System.out.println("\n\n\n\n\n\n\n\nGeneration: " +i);
+            fIlePrinter.printFitness(monks);
+
+           // System.out.println("\n\n\n\n\n\n\n\nGeneration: " +i);
             float OverallFitness = 0;
             for (Monk currMonk : monks)
             {
                 OverallFitness = OverallFitness + currMonk.getFitness();
-                System.out.println("Fitness : " + currMonk.getFitness());
+             //   System.out.println("Fitness : " + currMonk.getFitness());
 
             }
-            System.out.println("Overall fitness " + OverallFitness + " avg fitness " + OverallFitness/monks.size() );
+           // System.out.println("Overall fitness " + OverallFitness + " avg fitness " + OverallFitness/monks.size() );
+            fIlePrinter.printOverallScore(OverallFitness,OverallFitness/monks.size());
 
 
             monks = breeding.selectiveBreeding(monks,selectionMode);
@@ -48,6 +60,7 @@ public class EvolutionAlgorithm {
 
 
         }
+        fIlePrinter.closePrintWriter();
         return null;
     }
 

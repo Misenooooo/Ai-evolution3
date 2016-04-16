@@ -20,7 +20,7 @@ import java.util.Random;
   N R R N N R
   V V R N N N
   N N N N N N
-  N N N N N N  // vysledok este bez prechadzania
+  N N N N N N  // vy
  *
  */
 
@@ -65,13 +65,17 @@ public class Map {
             for(int j = 0; j < windth; j++)
             {
                 if(getMap()[i][j].getRock() == false && getMap()[i][j].getVisited() == false){
-                    str.append("N ");
+                    str.append("NV ");
                 }
                 if(getMap()[i][j].getRock() == true){
-                    str.append("R ");
+                    str.append(getMap()[i][j].getRock_number()+"R ");
                 }
                 if(getMap()[i][j].getVisited() == true){
-                    str.append(getMap()[i][j].visitCount+" ");
+                    if(getMap()[i][j].visitCount < 10) {
+                        str.append("0"+getMap()[i][j].visitCount + " ");
+                    }else{
+                        str.append(getMap()[i][j].visitCount + " ");
+                    }
                 }
             }
             str.append("\n");
@@ -112,6 +116,9 @@ public class Map {
     }
 
     public void initTest1() {
+        length = 10;
+        windth = 12;
+        rockQuantity = 6;
         init();
         Map[1][5].setRock(true); Map[1][5].setRock_number(0);
         Map[2][1].setRock(true); Map[2][1].setRock_number(1);
@@ -119,7 +126,7 @@ public class Map {
         Map[4][2].setRock(true); Map[4][2].setRock_number(3);
         Map[6][8].setRock(true); Map[6][8].setRock_number(4);
         Map[6][9].setRock(true); Map[6][9].setRock_number(5);
-
-
     }
+
+
 }
