@@ -1,7 +1,7 @@
 import javax.management.RuntimeErrorException;
 
 /**
- * Created by michal on 14.4.2016.
+ * Created by Michal Dolnak on 14.4.2016.
  */
 public class FitnessCalculator {
     private int cellsVisited = 0;
@@ -18,6 +18,13 @@ public class FitnessCalculator {
     private int y; // dlzka (hore dole)
 
     private Movement move;   // enum 4 pohyby
+
+    /**
+     * Function executes monk's information on the map and calculates his fitness.
+     * @param monk
+     * @param map
+     * @return boolean bestPossibleFound if this monk has perfect record than true is returned
+     */
 
     public boolean Calculate(Monk monk, Map map) {
         cellsVisited = 0;

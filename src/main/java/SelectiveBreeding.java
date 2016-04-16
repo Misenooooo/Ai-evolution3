@@ -1,16 +1,25 @@
 import com.esotericsoftware.kryo.Kryo;
 
-import javax.management.Query;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 /**
- * Created by michal on 15.4.2016.
+ * Created by Michal Dolnak on 15.4.2016.
  */
 public class SelectiveBreeding {
     private double mutationProbability;
     private int noReproductions;
+
+    /**
+     * Method calls chosen selection method and set probability of mutation.
+     * Tournament has higher mutation probablity than roulette.
+     *
+     * @param monks current generation
+     * @param mode
+     * @return newMonks new generation
+     */
+
 
     public List<Monk> selectiveBreeding(List<Monk> monks, int mode){
         List<Monk> newMonks= new ArrayList<>();
@@ -32,11 +41,17 @@ public class SelectiveBreeding {
         return newMonks;
     }
 
+    /**
+     *  Tournament method of selection.Two monks are randomly chosen a the best one becomes first parent.
+     *  The same process is repeated to decide the second monk. There is a probability called chanceOfWin, which gives
+     *  the worst one from the pair a chance to become parent.
+     *
+     * @param monks
+     * @return
+     */
     private List<Monk> Tournament2(List<Monk> monks) {
         int i = 0;
-        double ChanceOfWin = 1;
 
-        noReproductions = (monks.size()/4)*3;
 
         List<Monk> newMonks = new ArrayList<>();
         Kryo copier = new Kryo();
@@ -52,7 +67,8 @@ public class SelectiveBreeding {
         Monk parent2;
         Monk child;
 
-
+        double chanceOfWin = 1;
+        noReproductions = (monks.size()/4)*3;
         for(i = 0; i < noReproductions; i++)
         {
             rnd1 = random.nextInt(monks.size());
@@ -63,7 +79,7 @@ public class SelectiveBreeding {
             first = monks.get(rnd1);
             second = monks.get(rnd2);
 
-            if(random.nextDouble() < ChanceOfWin) {
+            if(random.nextDouble() < chanceOfWin) {
                 parent1 = getBest(first, second);
             }else{
                 parent1 = getWorst(first,second);
@@ -76,7 +92,7 @@ public class SelectiveBreeding {
             first = monks.get(rnd1);
             second = monks.get(rnd2);
 
-            if(random.nextDouble() < ChanceOfWin) {
+            if(random.nextDouble() < chanceOfWin) {
                 parent2 = getBest(first, second);
             }else{
                 parent2 = getWorst(first,second);
@@ -101,7 +117,14 @@ public class SelectiveBreeding {
         return newMonks;
     }
 
-     List<Monk> roulette(List<Monk> monks) { // TODO  potom napisat nejaku dokumentaciu do kodu, normalnu pdf dokumentaciu a este umoznit zadat vstup
+    /**
+     * Roulette selection method. Each monk gets an interval which has the same size as his fitness. A random number is chosen from 0 to the sum of all intervals.
+     * The monk, which is representative of this interval is chosen to become parent. The same process is repeated to decide the second parent.
+     *
+     * @param monks
+     * @return
+     */
+     List<Monk> roulette(List<Monk> monks) { // TODO  normalnu pdf dokumentaciu Velky test
          List<Monk> newMonks = new ArrayList<>();
          Random random = new Random();
          Kryo copier = new Kryo();

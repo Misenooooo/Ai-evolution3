@@ -1,7 +1,7 @@
 import java.util.Random;
 
 /**
- * Created by michal on 13.4.2016
+ * Created by Michal Dolnak on 13.4.2016
  *
  * Example:
  * Length = 5
@@ -22,6 +22,7 @@ import java.util.Random;
   N N N N N N
   N N N N N N  // vy
  *
+ * Map is used to dermeine Monk's fitness. It consists of Cells. Map has to be initialized before one can use it.
  */
 
 public class Map {
@@ -46,14 +47,27 @@ public class Map {
         {
             for (int j = 0; j < windth; j++)
             {
-                Map[i][j] = new Cell(); // toto je nutne
+                Map[i][j] = new Cell();
             }
 
         }
     }
 
+    /**
+     * Method generates rocks which will be randomly placed all over the map.
+     */
     public void initRandomRocks(){
-
+        Random random = new Random();
+        for (int i = 0; i < rockQuantity; i++){
+            int y = random.nextInt(length);
+            int x =  random.nextInt(windth);
+            if (Map[y][x].getRock() == false){
+                Map[y][x].setRock(true);
+                Map[y][x].setRock_number(i);
+            }else {
+                i--;
+            }
+        }
     }
     @Override
     public String toString(){
@@ -114,6 +128,10 @@ public class Map {
     public void setRockQuantity(int rockQuantity) {
         this.rockQuantity = rockQuantity;
     }
+
+    /**
+     * Test zo stranky
+     */
 
     public void initTest1() {
         length = 10;

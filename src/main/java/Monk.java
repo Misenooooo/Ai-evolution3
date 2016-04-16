@@ -4,6 +4,9 @@ import java.util.*;
 
 /**
  * Created by michal on 14.4.2016.
+ * Monk has starting positions and reactions to objections.The number of starting positions is equal to half of the circuit of the map.
+ * Each objection on map has reaction in Monk's genetic infromation.
+ * 
  */
 public class Monk {
 
@@ -45,8 +48,6 @@ public class Monk {
                 rockReactions[i] = 0; // dolava alebo dole
             }
         }
-
-
 
     }
 

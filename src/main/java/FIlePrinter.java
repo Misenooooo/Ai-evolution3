@@ -4,7 +4,8 @@ import java.util.List;
 import static java.nio.charset.StandardCharsets.*;
 
 /**
- * Created by michal on 16.4.2016.
+ * Created by Michal Dolnak on 16.4.2016.
+ * Class is used to print output to Vystup.txt
  */
 public class FIlePrinter {
     private static Writer writer = null;

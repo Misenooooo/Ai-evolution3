@@ -1,14 +1,20 @@
 /**
- * Created by michal on 13.4.2016.
+ * Created by Michal Dolnak on 13.4.2016.
+ *
+ * Cell contains information about position on map.
+ * There are 4 pieces of information available:
+ * 1. Boolean rock - whether position is blocked by some object
+ * 2. int rock_number - Number of rock on the map(starting with zero)
+ * 3. Boolean visited - whether position was already visite by someone
+ * 4. int visitCount - from which starting position has monk visited this cell
  */
 
 
 public class Cell {
     Boolean rock;
     int rock_number;
+
     Boolean visited;
-
-
     int visitCount;
 
     public Cell()
