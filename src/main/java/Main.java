@@ -15,12 +15,14 @@ public class Main {
      *
      */
     public static void main(String[] args) {
-         int mapLength = 10; // 5
-         int mapWidth = 12; // 6
-         int rockQuantity = 6; // 6 musi byt aspon 1
-         int numberOfMonks = 30; // 1 musi byt aspon 2, 3 aby to malo zmysel
-         int generationsLimit = 1000;
-         int selectionMode = 1; // Mod selekcie podporuje cislo 1-Turnaj q=2; cislo - 2 Ruleta
+        // config
+        int mapLength = 10; // 5
+        int mapWidth = 12; // 6
+        int rockQuantity = 6; // 6 musi byt aspon 1
+        int numberOfMonks = 20; // 1 musi byt aspon 2, 3 aby to malo zmysel
+        int generationsLimit = 100;
+        int selectionMode = 2; // Mod selekcie podporuje cislo 1-Turnaj q=2; cislo - 2 Ruleta
+        //
 
         Map map = null;
 

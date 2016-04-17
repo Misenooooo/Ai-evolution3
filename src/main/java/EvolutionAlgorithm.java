@@ -54,15 +54,20 @@ public class EvolutionAlgorithm {
             fIlePrinter.printFitness(monks);
 
            // System.out.println("\n\n\n\n\n\n\n\nGeneration: " +i);
-            float OverallFitness = 0;
+            double OverallFitness = 0;
+            double maxFitness = 0;
+
             for (Monk currMonk : monks)
             {
                 OverallFitness = OverallFitness + currMonk.getFitness();
+                if (currMonk.getFitness() > maxFitness) {
+                    maxFitness = currMonk.getFitness();
+                }
              //   System.out.println("Fitness : " + currMonk.getFitness());
 
             }
            // System.out.println("Overall fitness " + OverallFitness + " avg fitness " + OverallFitness/monks.size() );
-            fIlePrinter.printOverallScore(OverallFitness,OverallFitness/monks.size());
+            fIlePrinter.printOverallScore(OverallFitness,OverallFitness/monks.size(),maxFitness);
 
 
             monks = breeding.selectiveBreeding(monks,selectionMode);

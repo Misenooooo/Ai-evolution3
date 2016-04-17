@@ -57,9 +57,9 @@ public class FIlePrinter {
         }
     }
 
-    public void printOverallScore(double overallScore, double avgScore){
+    public void printOverallScore(double overallScore, double avgScore, double maxScore){
         try {
-            writer.write("Celkové fitness mníchov: "+overallScore +". priemerné fitness: " +avgScore+ "\n");
+            writer.write("Celkové fitness mníchov: "+overallScore +". priemerné fitness: " +avgScore+ " maximum bolo "+ maxScore+"\n");
         }catch (Exception e){
             e.printStackTrace();
         }
